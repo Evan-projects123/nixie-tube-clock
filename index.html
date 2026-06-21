@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nixie Tube Clock</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="display-frame">
+        <div class="battery-container" id="batteryDisplay">
+            <div class="tube-battery">?</div>
+            <div class="tube-battery">?</div>
+            <div class="tube-battery">?</div>
+            <div class="tube-battery font-symbols">%</div>
+        </div>
+
+        <div class="clock-wrapper">
+            <div class="clock-container" id="mainClockPanel">
+                <div class="tube" id="h1">0</div>
+                <div class="tube" id="h2">0</div>
+
+                <div class="separator">:</div>
+
+                <div class="tube" id="m1">0</div>
+                <div class="tube" id="m2">0</div>
+
+                <div class="separator">:</div>
+
+                <div class="tube" id="s1">0</div>
+                <div class="tube" id="s2">0</div>
+            </div>
+
+            <div class="marquee-container" id="marqueePanel">
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+                <div class="tube-mini"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
