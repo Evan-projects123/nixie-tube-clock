@@ -1,3 +1,4 @@
+/* script.js - (unchanged, works with the new responsive CSS) */
 // Helper function to turn "1" into "I" for authentic Nixie styling
 function formatDigit(digit) {
     return digit === '1' ? 'I' : digit;
