@@ -1,7 +1,8 @@
+/* styles.css */
 /* Load the custom Nixie font */
 @font-face {
     font-family: 'NixieFont';
-    src: url('fonts/TT Chocolates Trl ExtraLight.woff2') format('woff2');
+    src: url('../fonts/TT Chocolates Trl ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
 }
@@ -12,6 +13,12 @@
     --nixie-glow-intensity: 1;
     --nixie-fade-duration: 0.18s;
     --nixie-flash-color: #ffaa66;
+
+    /* Viewport-relative base sizes */
+    --tube-size: min(8vw, 12vh);
+    --tube-mini-size: min(3vw, 7vh);
+    --battery-size: min(1.8vw, 5vh);
+    --separator-size: min(7vw, 7vh);
 }
 
 body {
@@ -23,12 +30,17 @@ body {
     margin: 0;
     font-family: 'NixieFont', 'Courier New', monospace;
     user-select: none;
+    overflow: hidden;
 }
 
 /* Master viewport wrapping container layout */
 .display-frame {
     position: relative;
-    padding: 60px 40px 20px 40px;
+    padding: 6vh 4vw 2vh 4vw;
+    width: 90vw;
+    max-width: 90vh;
+    display: flex;
+    justify-content: center;
 }
 
 /* Battery Compartment Layout */
@@ -36,33 +48,34 @@ body {
     display: flex;
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 4vw;
     background-color: #0a0502;
-    padding: 6px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), inset 0 0 5px rgba(255, 100, 0, 0.05);
-    border: 2px solid #1a110b;
+    padding: 0.4vh 0.4vw;
+    border-radius: 0.6vh;
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.8), inset 0 0 0.5vh rgba(255, 100, 0, 0.05);
+    border: 0.2vh solid #1a110b;
 }
 
 .tube-battery {
     background: linear-gradient(to bottom, #26170c, #0d0703);
     color: #ff5500;
-    font-size: 1.2rem;
-    padding: 2px 0;
-    margin: 0 2px;
-    border-radius: 3px;
-    border: 1px solid #3d2311;
-    min-width: 20px;
-    height: 1.5rem;
-    line-height: 1.5rem;
+    font-size: var(--battery-size);
+    padding: 0.2vh 0;
+    margin: 0 0.2vw;
+    border-radius: 0.3vh;
+    border: 0.1vh solid #3d2311;
+    min-width: 3.5vw;
+    width: 3.5vw;
+    height: 5vh;
+    line-height: 5vh;
     text-align: center;
     opacity: var(--nixie-brightness);
     box-shadow:
-        inset 0 0 4px rgba(0, 0, 0, 0.6),
-        0 0 calc(3px * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.15);
+        inset 0 0 0.4vh rgba(0, 0, 0, 0.6),
+        0 0 calc(0.3vh * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.15);
     text-shadow:
-        0 0 calc(3px * var(--nixie-glow-intensity)) #ff5500,
-        0 0 calc(7px * var(--nixie-glow-intensity)) #ff3300;
+        0 0 calc(0.3vh * var(--nixie-glow-intensity)) #ff5500,
+        0 0 calc(0.7vh * var(--nixie-glow-intensity)) #ff3300;
 }
 
 .font-symbols {
@@ -75,50 +88,60 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 2vh;
+    width: 100%;
 }
 
 .clock-container {
     display: flex;
     background-color: #0a0502;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 100, 0, 0.1);
-    border: 4px solid #1a110b;
+    padding: 2vh 2vw;
+    border-radius: 1vh;
+    box-shadow: 0 0 2vh rgba(0, 0, 0, 0.8), inset 0 0 1vh rgba(255, 100, 0, 0.1);
+    border: 0.4vh solid #1a110b;
     cursor: pointer;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .tube {
     background: linear-gradient(to bottom, #26170c, #0d0703);
     color: #ff5500;
-    font-size: 5rem;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 6px;
-    border: 2px solid #3d2311;
-    min-width: 60px;
+    font-size: var(--tube-size);
+    padding: 1vh 1.5vw;
+    margin: 0 0.4vw;
+    border-radius: 0.6vh;
+    border: 0.2vh solid #3d2311;
+    min-width: 7vw;
+    width: 7vw;
     text-align: center;
     opacity: var(--nixie-brightness);
     box-shadow:
-        inset 0 0 15px rgba(0, 0, 0, 0.6),
-        0 0 calc(10px * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.2);
+        inset 0 0 1.5vh rgba(0, 0, 0, 0.6),
+        0 0 calc(1vh * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.2);
     text-shadow:
-        0 0 calc(5px * var(--nixie-glow-intensity)) #ff5500,
-        0 0 calc(10px * var(--nixie-glow-intensity)) #ff5500,
-        0 0 calc(20px * var(--nixie-glow-intensity)) #ff3300,
-        0 0 calc(40px * var(--nixie-glow-intensity)) #ff1100;
+        0 0 calc(0.5vh * var(--nixie-glow-intensity)) #ff5500,
+        0 0 calc(1vh * var(--nixie-glow-intensity)) #ff5500,
+        0 0 calc(2vh * var(--nixie-glow-intensity)) #ff3300,
+        0 0 calc(4vh * var(--nixie-glow-intensity)) #ff1100;
+    aspect-ratio: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .separator {
     color: #cc4400;
-    font-size: 5rem;
-    line-height: 5rem;
-    margin: 0 10px;
-    text-shadow: 0 0 calc(10px * var(--nixie-glow-intensity)) #ff3300;
+    font-size: var(--separator-size);
+    line-height: var(--separator-size);
+    margin: 0 0.8vw;
+    text-shadow: 0 0 calc(1vh * var(--nixie-glow-intensity)) #ff3300;
     display: flex;
     align-items: center;
     font-family: 'Courier New', monospace;
     opacity: var(--nixie-brightness);
+    min-width: 1.5vw;
+    justify-content: center;
 }
 
 /* Separation Colon Behaviors */
@@ -146,35 +169,42 @@ body {
 .marquee-container {
     display: flex;
     background-color: #0a0502;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 100, 0, 0.1);
-    border: 3px solid #1a110b;
+    padding: 1vh 1vw;
+    border-radius: 0.8vh;
+    box-shadow: 0 0 1.5vh rgba(0, 0, 0, 0.8), inset 0 0 1vh rgba(255, 100, 0, 0.1);
+    border: 0.3vh solid #1a110b;
     cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 /* Scaled down version of your original tube */
 .tube-mini {
     background: linear-gradient(to bottom, #26170c, #0d0703);
     color: #ff5500;
-    font-size: 2rem;
-    padding: 5px 0;
-    margin: 0 2px;
-    border-radius: 4px;
-    border: 1px solid #3d2311;
-    min-width: 32px;
-    height: 2.4rem;
-    line-height: 2.4rem;
+    font-size: var(--tube-mini-size);
+    padding: 0.4vh 0;
+    margin: 0 0.15vw;
+    border-radius: 0.4vh;
+    border: 0.1vh solid #3d2311;
+    min-width: 3.2vw;
+    width: 3.2vw;
+    height: 7vh;
+    line-height: 7vh;
     text-align: center;
     text-transform: uppercase;
     opacity: var(--nixie-brightness);
     box-shadow:
-        inset 0 0 8px rgba(0, 0, 0, 0.6),
-        0 0 calc(5px * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.15);
+        inset 0 0 0.8vh rgba(0, 0, 0, 0.6),
+        0 0 calc(0.5vh * var(--nixie-glow-intensity)) rgba(255, 85, 0, 0.15);
     text-shadow:
-        0 0 calc(5px * var(--nixie-glow-intensity)) #ff5500,
-        0 0 calc(10px * var(--nixie-glow-intensity)) #ff5500,
-        0 0 calc(20px * var(--nixie-glow-intensity)) #ff3300;
+        0 0 calc(0.5vh * var(--nixie-glow-intensity)) #ff5500,
+        0 0 calc(1vh * var(--nixie-glow-intensity)) #ff5500,
+        0 0 calc(2vh * var(--nixie-glow-intensity)) #ff3300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --- GLOW & FLICKER SYSTEM --- */
@@ -185,23 +215,23 @@ body {
 @keyframes gasGlow {
     0% {
         color: #662200;
-        text-shadow: 0 0 2px rgba(255, 85, 0, 0.3);
+        text-shadow: 0 0 0.2vh rgba(255, 85, 0, 0.3);
     }
 
     50% {
         color: var(--nixie-flash-color);
         text-shadow:
-            0 0 calc(8px * var(--nixie-glow-intensity)) #ff7700,
-            0 0 calc(18px * var(--nixie-glow-intensity)) #ff4400;
+            0 0 calc(0.8vh * var(--nixie-glow-intensity)) #ff7700,
+            0 0 calc(1.8vh * var(--nixie-glow-intensity)) #ff4400;
     }
 
     100% {
         color: #ff5500;
         text-shadow:
-            0 0 calc(5px * var(--nixie-glow-intensity)) #ff5500,
-            0 0 calc(10px * var(--nixie-glow-intensity)) #ff5500,
-            0 0 calc(20px * var(--nixie-glow-intensity)) #ff3300,
-            0 0 calc(40px * var(--nixie-glow-intensity)) #ff1100;
+            0 0 calc(0.5vh * var(--nixie-glow-intensity)) #ff5500,
+            0 0 calc(1vh * var(--nixie-glow-intensity)) #ff5500,
+            0 0 calc(2vh * var(--nixie-glow-intensity)) #ff3300,
+            0 0 calc(4vh * var(--nixie-glow-intensity)) #ff1100;
     }
 }
 
@@ -213,19 +243,19 @@ body {
     0% {
         opacity: calc(0.75 * var(--nixie-brightness));
         color: #e64d00;
-        text-shadow: 0 0 4px #ff4400, 0 0 12px #ff2200;
+        text-shadow: 0 0 0.4vh #ff4400, 0 0 1.2vh #ff2200;
     }
 
     50% {
         opacity: var(--nixie-brightness);
         color: #ff6611;
-        text-shadow: 0 0 7px #ff6600, 0 0 22px #ff3300;
+        text-shadow: 0 0 0.7vh #ff6600, 0 0 2.2vh #ff3300;
     }
 
     100% {
         opacity: calc(0.85 * var(--nixie-brightness));
         color: #ff4400;
-        text-shadow: 0 0 3px #ff3300, 0 0 10px #ff1100;
+        text-shadow: 0 0 0.3vh #ff3300, 0 0 1vh #ff1100;
     }
 }
 
@@ -249,10 +279,10 @@ body {
     0% {
         color: #ff5500;
         text-shadow:
-            0 0 calc(5px * var(--nixie-glow-intensity)) #ff5500,
-            0 0 calc(10px * var(--nixie-glow-intensity)) #ff5500,
-            0 0 calc(20px * var(--nixie-glow-intensity)) #ff3300,
-            0 0 calc(40px * var(--nixie-glow-intensity)) #ff1100;
+            0 0 calc(0.5vh * var(--nixie-glow-intensity)) #ff5500,
+            0 0 calc(1vh * var(--nixie-glow-intensity)) #ff5500,
+            0 0 calc(2vh * var(--nixie-glow-intensity)) #ff3300,
+            0 0 calc(4vh * var(--nixie-glow-intensity)) #ff1100;
     }
 
     100% {
@@ -270,19 +300,154 @@ body {
     0% {
         color: #ff5500;
         text-shadow:
-            0 0 calc(3px * var(--nixie-glow-intensity)) #ff5500,
-            0 0 calc(7px * var(--nixie-glow-intensity)) #ff3300;
+            0 0 calc(0.3vh * var(--nixie-glow-intensity)) #ff5500,
+            0 0 calc(0.7vh * var(--nixie-glow-intensity)) #ff3300;
     }
 
     100% {
         color: rgba(102, 34, 0, 0.15);
         text-shadow: none;
         border-color: #1a110b;
-        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+        box-shadow: inset 0 0 0.4vh rgba(0, 0, 0, 0.6);
     }
 }
 
-/* --- TOUCH SCREEN OPTIMIZATIONS --- */
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 600px) {
+    :root {
+        --tube-size: min(10vw, 7vh);
+        --tube-mini-size: min(4vw, 3vh);
+        --battery-size: min(2.2vw, 2vh);
+        --separator-size: min(8vw, 6vh);
+    }
+
+    .display-frame {
+        padding: 4vh 2vw 1vh 2vw;
+    }
+
+    .clock-container {
+        padding: 1.5vh 1.5vw;
+        border-width: 0.3vh;
+    }
+
+    .tube {
+        padding: 0.8vh 1vw;
+        margin: 0 0.2vw;
+        min-width: 6vw;
+        border-width: 0.15vh;
+    }
+
+    .marquee-container {
+        padding: 0.8vh 0.8vw;
+        border-width: 0.2vh;
+    }
+
+    .tube-mini {
+        min-width: 4vw;
+        width: 4vw;
+        height: 2.8vh;
+        line-height: 2.8vh;
+        font-size: min(3.5vw, 2.8vh);
+    }
+
+    .battery-container {
+        padding: 0.2vh 0.3vw;
+        right: 2vw;
+        top: 0.5vh;
+    }
+
+    .tube-battery {
+        min-width: 2.8vw;
+        width: 2.8vw;
+        height: 1.8vh;
+        line-height: 1.8vh;
+        font-size: min(2vw, 1.6vh);
+    }
+}
+
+@media (max-width: 400px) {
+    :root {
+        --tube-size: min(12vw, 6vh);
+        --tube-mini-size: min(4.5vw, 2.5vh);
+        --battery-size: min(2.5vw, 1.6vh);
+        --separator-size: min(9vw, 5vh);
+    }
+
+    .tube {
+        min-width: 7vw;
+        padding: 0.5vh 0.6vw;
+        margin: 0 0.15vw;
+        border-radius: 0.4vh;
+    }
+
+    .tube-mini {
+        min-width: 4.5vw;
+        width: 4.5vw;
+        height: 2.4vh;
+        line-height: 2.4vh;
+        font-size: min(4vw, 2.4vh);
+        margin: 0 0.1vw;
+    }
+
+    .separator {
+        margin: 0 0.4vw;
+        font-size: min(7vw, 4.5vh);
+        line-height: min(7vw, 4.5vh);
+        min-width: 1vw;
+    }
+
+    .battery-container {
+        padding: 0.1vh 0.2vw;
+        right: 1vw;
+    }
+
+    .tube-battery {
+        min-width: 3vw;
+        width: 3vw;
+        height: 1.6vh;
+        line-height: 1.6vh;
+        font-size: min(2.2vw, 1.4vh);
+    }
+
+    .display-frame {
+        padding: 3vh 1vw 0.5vh 1vw;
+    }
+
+    .clock-wrapper {
+        gap: 1.2vh;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    :root {
+        --tube-size: min(6vw, 10vh);
+        --tube-mini-size: min(2.5vw, 4vh);
+        --battery-size: min(1.5vw, 2vh);
+        --separator-size: min(5vw, 8vh);
+    }
+
+    .display-frame {
+        padding: 2vh 4vw 1vh 4vw;
+    }
+
+    .clock-wrapper {
+        gap: 1vh;
+    }
+
+    .tube {
+        padding: 0.3vh 1vw;
+        min-width: 4vw;
+    }
+
+    .tube-mini {
+        height: 3.5vh;
+        line-height: 3.5vh;
+        min-width: 2.5vw;
+        width: 2.5vw;
+    }
+}
+
+/* Touch screen optimizations */
 body,
 .clock-container,
 .marquee-container,
