@@ -16,7 +16,7 @@ A retro-style Nixie tube clock simulation with multiple functions:
 - Touch and mouse controls
 
 ## Live Demo
-[Add GitHub link once deployed]
+https://evan-projects123.github.io/nixie-tube-clock/
 
 ## Usage
 - Click on clock panel to cycle through modes
