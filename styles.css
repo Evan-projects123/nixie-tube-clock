@@ -2,7 +2,7 @@
 /* Load the custom Nixie font */
 @font-face {
     font-family: 'NixieFont';
-    src: url('../fonts/TT Chocolates Trl ExtraLight.woff2') format('woff2');
+    src: url('fonts/TT Chocolates Trl ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
 }
